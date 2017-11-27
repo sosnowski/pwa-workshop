@@ -1,0 +1,66 @@
+body {
+    background: green;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+body > .main {
+    flex: 1;
+}
+
+body > .buttons {
+    height: 5rem;
+    text-align: center;
+}
+body > .colors {
+    text-align: center;
+}
+
+.buttons button {
+    height: 3rem;
+    margin: 1rem;
+    padding: 0 2rem;
+    border: 0;
+    font-size: 1.2rem;
+    background: #fff;
+    cursor: pointer;
+}
+
+
+.colors .color {
+    display: inline-block;
+    border: 1px solid #fff;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.1rem;
+    background: red;
+}
+
+.clicker {
+    margin: auto;
+    height: 10rem;
+    width: 10rem;
+    margin-top: calc(50vh - 5rem);
+    background: white;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10rem;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 5rem;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;
+}
+.clicker:hover {
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.5);
+}
+.clicker:active {
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+}

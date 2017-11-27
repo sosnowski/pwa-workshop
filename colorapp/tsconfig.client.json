@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["dom", "es6"],
+        "outDir": "./dist/client"
+    },
+    "include": [
+        "./src/client/**/*"
+    ]
+    
+}
