@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const clicker = document.querySelector('.clicker');
     const saver = document.querySelector('.buttons .save');
     const db = new ColorsDb();
-    const pwa = initializePWA();
+    const pwa = await initializePWA();
 
     const colorsManager = new ColorsManager(
         document.querySelector('body')!,
