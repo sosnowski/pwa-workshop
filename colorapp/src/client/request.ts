@@ -1,6 +1,6 @@
 import { Color } from "./colors";
 
-export const saveColor = async (color: Color) => {
+export const saveColor = (color: Color) => {
     return fetch('/api/colors', {
         method: 'PUT',
         body: JSON.stringify(color),
@@ -23,4 +23,14 @@ export const loadColors = async () => {
     catch(e) {
         console.error(e.message);
     }
+};
+
+export const saveSubscription = (sub: PushSubscription) => {
+    return fetch('/api/subscriptions', {
+        method: 'POST',
+        body: JSON.stringify(sub),
+        headers: new Headers({
+            "Content-Type": "application/json",
+        })
+    });
 };
