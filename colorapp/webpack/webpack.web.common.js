@@ -6,6 +6,7 @@ const root = require('./helpers').root;
 module.exports = {
     entry: {
         'app': root('/src/client/app.ts'),
+        'worker': root('/src/client/worker.ts'),
         'styles': root('/src/client/app.css')
     },
     resolve: {
@@ -34,6 +35,10 @@ module.exports = {
                 loader: ['style-loader', 'css-loader'],
         
                 include: root('src/client')
+            },
+            {
+                test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                loader: 'file-loader?name=assets/[name].[ext]'
             }
         ],
 
@@ -47,7 +52,7 @@ module.exports = {
         // new ExtractTextPlugin('styles.css'),
         new CopyPlugin([
             { from: 'src/client/manifest.json' }
-            // { from: 'src/resources', to: 'resources' }
+            // { from: 'src/client/assets', to: 'client/assets' }
         ])
     ]
 };

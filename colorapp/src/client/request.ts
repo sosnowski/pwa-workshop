@@ -1,22 +1,13 @@
 import { Color } from "./colors";
 
 export const saveColor = async (color: Color) => {
-    try {
-        const response = await fetch('/api/colors', {
-            method: 'PUT',
-            body: JSON.stringify(color),
-            headers: new Headers({
-                "Content-Type": "application/json",
-            })
-        });
-        if (!response.ok) {
-            throw new Error('Failed to save colors');
-        }
-        console.log('Server request ok');
-    }
-    catch (e) {
-        console.error(e.message);
-    }
+    return fetch('/api/colors', {
+        method: 'PUT',
+        body: JSON.stringify(color),
+        headers: new Headers({
+            "Content-Type": "application/json",
+        })
+    });
 };
 
 export const loadColors = async () => {
