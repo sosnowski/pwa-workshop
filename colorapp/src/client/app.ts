@@ -1,8 +1,21 @@
 import { Color, ColorsManager } from './colors';
-import { saveColor, loadColors } from './request'
+import { PWAService, registerServiceWorker } from './pwa';
+import { ColorsDb } from './db';
+import { saveSubscription } from './request';
 
+const initPwa = async (): Promise<PWAService> => {
+    const pwa: PWAService = await registerServiceWorker();
+    await pwa.askForPermission();
+    const subscriptionData = await pwa.registerNotifications();
+    saveSubscription(subscriptionData);
+    console.log(JSON.stringify(subscriptionData));
+
+    return pwa;
+};
 
 window.addEventListener('DOMContentLoaded', async () => {
+    const db = new ColorsDb();
+    const pwa = await initPwa();
 
     const clicker = document.querySelector('.clicker');
     const saver = document.querySelector('.buttons .save');
@@ -13,7 +26,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     const next = () => {
         currentColor = colorsManager.nextRandomColor();
-        colorsManager.applyColor(currentColor);
+        colorsManager.applyBgColor(currentColor);
     }
 
     let currentColor: Color;
@@ -21,16 +34,20 @@ window.addEventListener('DOMContentLoaded', async () => {
     clicker!.addEventListener('click', next);
 
     saver!.addEventListener('click', () => {
-        colorsManager.addSavedColor(currentColor);
-        saveColor(currentColor);
+        colorsManager.displaySavedColor(currentColor); //add to template
+        //save to db
+        db.saveColor(currentColor);
+
+        //request sync
+        pwa.sync();
     });
 
     next();
 
-    let colors: Color[] = await loadColors();
-    colors.forEach((color) => {
-        colorsManager.addSavedColor(color); 
-
+    (await db.getAllColors()).map((colorDTO) => {
+        return colorDTO.color;
+    }).forEach((color: Color) => {
+        colorsManager.displaySavedColor(color); 
     });
 });
 

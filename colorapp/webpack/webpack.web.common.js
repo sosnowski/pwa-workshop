@@ -51,8 +51,8 @@ module.exports = {
         }),
         // new ExtractTextPlugin('styles.css'),
         new CopyPlugin([
-            { from: 'src/client/manifest.json' }
-            // { from: 'src/client/assets', to: 'client/assets' }
+            { from: 'src/client/manifest.json' },
+            { from: 'src/client/assets', to: 'assets' }
         ])
     ]
 };

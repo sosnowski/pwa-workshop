@@ -13,11 +13,11 @@ export class ColorsManager {
         return [red, green, blue];
     }
 
-    applyColor = (color: Color) => {
+    applyBgColor = (color: Color) => {
         this.backgroundEl.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
     }
 
-    addSavedColor = (color: Color) => {
+    displaySavedColor = (color: Color) => {
         const el = document.createElement('div');
         el.className = 'color';
         el.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
