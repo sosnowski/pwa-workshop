@@ -11,12 +11,6 @@ const colors: Color[] = [];
 let VAPID_KEY_PUBLIC: string = 'BIsKmCP9nKpQpaLScjDpS6_22_0pasOU6DpeZ4Ezr6E6xZzd3uuZkvE1Y83D4RitNxXfQGYXSgIFNcwlcrRJpWo';
 let VAPID_KEY_PRIVATE: string = 'DU1QJvahEifsnMd2Z584e5jm7sfsanvRQ-gEaazjyd0';
 
-webpush.setVapidDetails(
-    'mailto:test@test.pl',
-    VAPID_KEY_PUBLIC,
-    VAPID_KEY_PRIVATE
-);
-
 interface Subscription {
     endpoint: string;
     expirationTime: Date;
@@ -46,13 +40,11 @@ app.get('/api/colors', (req: express.Request, res: express.Response) => {
 });
 
 app.post('/api/subscriptions', (req: express.Request, res: express.Response) => {
-    storedSubscription = req.body;
-    res.json(storedSubscription);
+
 });
 
 app.get('/api/notify', (req: express.Request, res: express.Response) => {
-    webpush.sendNotification(storedSubscription, 'This is my notification payload');
-    res.sendStatus(200);
+
 });
 
 app.listen(4000, () => {

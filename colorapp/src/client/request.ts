@@ -12,26 +12,15 @@ export const saveColor = async (color: Color) => {
 
 
 export const saveSubscription = (subData: any) => {
-    return fetch('/api/subscriptions', {
-        method: 'POST',
-        body: JSON.stringify(subData),
-        headers: new Headers({
-            "Content-Type": "application/json",
-        })
-    });
+
 };
 
-export const loadColors = async () => {
-    try {
-        const response = await fetch('/api/colors', {
-            method: 'GET'
-        })
-        if (!response.ok) {
-            throw new Error('Unable to load saved colors');
-        }
-        return response.json();
+export const loadColors = async (): Promise<Color[]> => {
+    const response = await fetch('/api/colors', {
+        method: 'GET'
+    })
+    if (!response.ok) {
+        throw new Error('Unable to load saved colors');
     }
-    catch(e) {
-        console.error(e.message);
-    }
+    return response.json() as Promise<Color[]>;
 };
