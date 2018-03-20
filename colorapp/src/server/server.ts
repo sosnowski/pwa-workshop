@@ -24,7 +24,7 @@ let storedSubscription: Subscription;
 
 app.use(bodyParser());
 
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 app.put('/api/colors', (req: express.Request, res: express.Response) => {
     const color: Color = req.body;

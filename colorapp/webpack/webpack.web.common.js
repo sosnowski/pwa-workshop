@@ -47,7 +47,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/client/index.html',
             chunksSortMode: 'dependency',
-            inject: 'body'
+            inject: 'body',
+            excludeChunks: [ 'worker' ]
         }),
         // new ExtractTextPlugin('styles.css'),
         new CopyPlugin([

@@ -5,7 +5,7 @@ module.exports = {
     devtool: 'source-map',
 
     output: {
-        path: root('dist/client'),
+        path: root('/src/dist'),
         filename: '[name].js'
     },
 
