@@ -15,9 +15,9 @@
  - Background sync
  - Dummy push notifications
 
-### Build the whole project (+ watch for changes)
+### Build the application (+ watch for changes)
 
-npm run build
+npm run client
 
 ### Start the server
 npm run server
